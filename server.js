@@ -4,12 +4,12 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import bcrypt from 'bcryptjs';
-import { connectDB } from './config/db.js';
-import User from './models/User.js';
-import authRoutes from './routes/auth.js';
-import noteRoutes from './routes/notes.js';
-import paymentRoutes from './routes/payments.js';
-import purchaseRoutes from './routes/purchases.js';
+import { connectDB } from './src/config/db.js';
+import User from './src/models/User.js';
+import authRoutes from './src/routes/auth.js';
+import noteRoutes from './src/routes/notes.js';
+import paymentRoutes from './src/routes/payments.js';
+import purchaseRoutes from './src/routes/purchases.js';
 
 const app = express();
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
