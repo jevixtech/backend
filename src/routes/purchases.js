@@ -16,5 +16,26 @@ router.get('/admin/orders', protect, adminOnly, asyncHandler(async (_req, res) =
   const purchases = await Purchase.find().populate('user', 'name email').populate('note', 'title').sort({ createdAt: -1 }).limit(500);
   res.json({ purchases });
 }));
+// Admin: Delete Purchase
+router.delete(
+  '/admin/orders/:id',
+  protect,
+  adminOnly,
+  asyncHandler(async (req, res) => {
+    const purchase = await Purchase.findById(req.params.id);
 
+    if (!purchase) {
+      return res.status(404).json({
+        message: 'Purchase not found'
+      });
+    }
+
+    await Purchase.findByIdAndDelete(req.params.id);
+
+    res.json({
+      success: true,
+      message: 'Purchase deleted successfully'
+    });
+  })
+);
 export default router;
