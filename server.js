@@ -13,7 +13,7 @@ import purchaseRoutes from './src/routes/purchases.js';
 
 const app = express();
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
-app.use(cors({ origin: process.env.FRONTEND_URL?.split(',').map(s => s.trim()) || 'http://localhost:5173' }));
+app.use(cors({ origin: process.env.FRONTEND_URL?.split(',').map(s => s.trim()) || 'https://shop.orbitstech.in' }));
 app.use(express.json({ limit: '1mb' }));
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, limit: 300, standardHeaders: true, legacyHeaders: false }));
 app.get('/api/health', (_req, res) => res.json({ ok: true, service: 'OrbitsTech Notes API' }));
